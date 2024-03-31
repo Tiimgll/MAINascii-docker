@@ -10,10 +10,12 @@
     <h1>ASCII Image Converter</h1>
     <form method="post" action="/convert" enctype="multipart/form-data">
         <input type="file" name="image" accept="image/*" required>
+        <input type="number" name="resolution" placeholder="Resolution" min="1" required>
         <button type="submit">Convert to ASCII</button>
     </form>
     <form method="post" action="/convert_url">
         <input type="url" name="image_url" placeholder="Enter image URL" required>
+        <input type="number" name="resolution" placeholder="Resolution" min="1" required>
         <button type="submit">Convert from URL</button>
     </form>
 </body>

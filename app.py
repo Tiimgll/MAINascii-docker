@@ -3,7 +3,6 @@ from PIL import Image
 import io
 import base64
 from ascii_image import image_resize, image_to_ascii_greyscale
-from ascii_image import adjust_brightness, adjust_contrast
 
 app = Flask(__name__)
 
@@ -21,8 +20,9 @@ def convert():
         return redirect(request.url)
     
     img = Image.open(file.stream)
-    img = image_resize(img, width=100)
-    ascii_list = image_to_ascii_greyscale(img, 100, ['.', ',', ':', ';', '+', '*', '?', '%', 'S', '#', '@'])
+    resolution = int(request.form['resolution'])
+    img = image_resize(img, width=resolution)
+    ascii_list = image_to_ascii_greyscale(img, resolution, ['.', ',', ':', ';', '+', '*', '?', '%', 'S', '#', '@'])
     ascii_image = '\n'.join(ascii_list)
     
     # Convert ASCII image to base64
@@ -31,6 +31,7 @@ def convert():
     base64_ascii_image = base64_bytes.decode('utf-8')
     
     return render_template('result.html', ascii_image=ascii_image, base64_ascii_image=base64_ascii_image)
+
 
 @app.route('/save', methods=['POST'])
 def save_ascii_image():
