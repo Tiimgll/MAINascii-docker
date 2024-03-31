@@ -1,4 +1,5 @@
-#MAINascii
+# MAINascii
+
 Создать виртуальное окружение, включая библиотеки из файла requirements.txt.
 
 Для запуска приложения python app.py
