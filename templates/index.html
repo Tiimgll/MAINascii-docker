@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ASCII Image Converter</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <h1>ASCII Image Converter</h1>
+    <form method="post" action="/convert" enctype="multipart/form-data">
+        <input type="file" name="image" accept="image/*" required>
+        <button type="submit">Convert to ASCII</button>
+    </form>
+    <form method="post" action="/convert_url">
+        <input type="url" name="image_url" placeholder="Enter image URL" required>
+        <button type="submit">Convert from URL</button>
+    </form>
+</body>
+</html>

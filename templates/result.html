@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ASCII Image Result</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <pre>{{ ascii_image }}</pre>
+    <img src="data:image/png;base64,{{ base64_ascii_image }}" alt="ASCII Image">
+    <form action="/save" method="post">
+        <input type="hidden" name="ascii_image" value="{{ ascii_image }}">
+        <button type="submit">Save as Text File</button>
+    </form>
+</body>
+</html>
